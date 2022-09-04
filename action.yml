@@ -1,5 +1,10 @@
 name: 'AutoTagVersionRelease'
+author: 'PIMPfiction'
 description: 'Generates auto tags and releases current tag. It can be used in custom developed golang packages for versioning.'
+inputs:
+  github_token: ${{ github.token }}
+  required: true
+  description: 'Github token is needed for creating release'
 on:
   push:
     branches: [ master ]
@@ -13,7 +18,7 @@ jobs:
     steps: 
     - uses: phish108/autotag-action@1.1.51
       with:
-        github-token: ${{ secrets.GITHUB_TOKEN}}
+        github-token: ${{ github.event.inputs.github_token }}
     - uses: actions/checkout@v3
       with:
         fetch-depth: 0
@@ -22,7 +27,7 @@ jobs:
         git fetch -t && tag=$(echo $(git tag -l| sort -V | tail -n1 )) && echo TAG=$(echo $tag) >> $GITHUB_ENV
     - uses: "actions/github-script@v6"
       with:
-        github-token: "${{ secrets.GITHUB_TOKEN}}"
+        github-token: "${{ github.event.inputs.github_token }}"
         script: |
           try {
             await github.rest.repos.createRelease({

@@ -1,5 +1,5 @@
-name: AutoTagRelease
-
+name: 'AutoTagVersionRelease'
+description: 'Generates auto tags and releases current tag. It can be used in custom developed golang packages for versioning.'
 on:
   push:
     branches: [ master ]

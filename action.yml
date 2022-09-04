@@ -18,7 +18,7 @@ jobs:
     steps: 
     - uses: phish108/autotag-action@1.1.51
       with:
-        github-token: ${{ inputs.github_token }}
+        github-token: ${{ inputs.github-token }}
     - uses: actions/checkout@v3
       with:
         fetch-depth: 0
@@ -27,7 +27,7 @@ jobs:
         git fetch -t && tag=$(echo $(git tag -l| sort -V | tail -n1 )) && echo TAG=$(echo $tag) >> $GITHUB_ENV
     - uses: "actions/github-script@v6"
       with:
-        github-token: "${{ inputs.github_token }}"
+        github-token: '${{ inputs.github-token }}'
         script: |
           try {
             await github.rest.repos.createRelease({

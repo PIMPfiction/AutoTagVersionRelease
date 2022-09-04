@@ -15,6 +15,7 @@ runs:
     with:
       fetch-depth: 0
   - name: "Fetch Tags"
+    shell: bash
     run: |
       git fetch -t && tag=$(echo $(git tag -l| sort -V | tail -n1 )) && echo TAG=$(echo $tag) >> $GITHUB_ENV
   - uses: "actions/github-script@v6"

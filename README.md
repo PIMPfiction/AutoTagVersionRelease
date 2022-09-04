@@ -16,7 +16,9 @@ Just copy and paste whole action.yml or use below usage directly.
 ```yaml
 jobs:
   release:
-    runs-on: # ...
+    runs-on: ubuntu-latest
     steps:
       - uses: PIMPfiction/AutoTagVersionRelease@v1
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN}}
 ```

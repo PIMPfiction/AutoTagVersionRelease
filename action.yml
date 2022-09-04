@@ -2,7 +2,7 @@ name: 'AutoTagVersionRelease'
 author: 'PIMPfiction'
 description: 'Generates auto tags and releases current tag. It can be used in custom developed golang packages for versioning.'
 inputs:
-  github_token: ${{ github.token }}
+  github-token: ${{ github.token }}
   required: true
   description: 'Github token is needed for creating release'
 on:
